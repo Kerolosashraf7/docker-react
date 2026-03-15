@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vezeeta User Batch Creator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="upload-card">
+        <div>
+          <p class="eyebrow">CSV upload</p>
+          <h1>Create users from file</h1>
+          <p class="section-copy">
+            Upload a CSV with the columns <code>mail</code>, <code>key</code>, and <code>name</code>. Passwords are generated automatically when file is uploaded.
+          </p>
+        </div>
+
+        <div class="toolbar">
+          <label class="upload-button" for="csvFileInput">Upload CSV file</label>
+          <input id="csvFileInput" type="file" accept=".csv,text/csv" hidden />
+          <button id="sendAllButton" class="primary-button" type="button" disabled>Send all users</button>
+        </div>
+
+        <p id="fileStatus" class="file-status">No file uploaded.</p>
+      </section>
+
+      <section class="summary-grid">
+        <article>
+          <span>Total users</span>
+          <strong id="totalCount">0</strong>
+        </article>
+        <article>
+          <span>Idle</span>
+          <strong id="idleCount">0</strong>
+        </article>
+        <article>
+          <span>Success</span>
+          <strong id="successCount">0</strong>
+        </article>
+        <article>
+          <span>Error</span>
+          <strong id="errorCount">0</strong>
+        </article>
+      </section>
+
+      <section class="table-card">
+        <div class="table-header">
+          <div>
+            <p class="eyebrow">Batch records</p>
+            <h2>Uploaded CSV rows</h2>
+          </div>
+          <p class="table-note">Passwords are created.</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Owner key</th>
+                <th>Password</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="usersTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <template id="rowTemplate">
+      <tr>
+        <td class="user-name"></td>
+        <td class="user-mail"></td>
+        <td class="user-key"></td>
+        <td class="user-password"></td>
+        <td>
+          <span class="status-pill"></span>
+          <p class="status-message"></p>
+        </td>
+        <td>
+          <button class="row-button" type="button">Send</button>
+        </td>
+      </tr>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
