@@ -1,9 +1,0 @@
-{
-  "name": "vezeeta-user-batch",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Single-page batch user creator for Vezeeta",
-  "scripts": {
-    "start": "node server.js"
-  }
-}
